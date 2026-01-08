@@ -1,22 +1,24 @@
 package com.project.ecommerce.service;
 
+import com.project.ecommerce.dto.CategoryRequest;
+import com.project.ecommerce.dto.CategoryResponse;
 import com.project.ecommerce.model.Category;
 
 import java.util.List;
 
 public interface CategoryService {
-    default List<Category> getCategories() {
+    default CategoryResponse getCategories(Integer pageNumber, Integer pageSize,String sortBy,String sortOrder) {
         return null;
     }
 
-    default String addCategory(Category category) {
+    default CategoryRequest addCategory(CategoryRequest categoryRequest) {
 return  null;
     }
-    default String deleteCategory(Long categoryId){
+    default CategoryRequest deleteCategory(Long categoryId){
         return null;
 
     }
-    default Category updateCategory(Category category,Long categoryId){
+    default CategoryRequest updateCategory(CategoryRequest categoryRequest,Long categoryId){
         return null;
     }
 }

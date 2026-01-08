@@ -1,10 +1,11 @@
 package com.project.ecommerce.exception;
+import com.project.ecommerce.dto.APIResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.server.ResponseStatusException;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,13 +22,15 @@ return new ResponseEntity<Map<String,String>>(errors, HttpStatus.BAD_REQUEST);
 
     }
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<String> resourceNotFoundException(ResourceNotFoundException e){
+    public ResponseEntity<APIResponse> resourceNotFoundException(ResourceNotFoundException e){
         String message = e.getMessage();
-        return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        APIResponse apiResponse = new APIResponse(message,false);
+        return new ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
     }
     @ExceptionHandler(APINotFoundException.class)
-    public ResponseEntity<String> APINotFoundException(APINotFoundException e){
+    public ResponseEntity<APIResponse> APINotFoundException(APINotFoundException e){
         String message=e.getMessage();
-        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        APIResponse apiResponse = new APIResponse(message,false);
+        return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
     }
 }
