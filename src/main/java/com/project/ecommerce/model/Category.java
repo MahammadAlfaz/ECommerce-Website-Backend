@@ -1,13 +1,12 @@
 package com.project.ecommerce.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity(name="Categories")
 @Data
@@ -20,4 +19,7 @@ public class Category {
     @NotEmpty(message = "Category name can't be blank")
     @Size(min = 5,message = "Category name should be more than 4 character")
     private String categoryName;
+
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
+    private List<Product> products;
 }

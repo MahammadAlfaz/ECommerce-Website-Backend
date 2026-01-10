@@ -1,21 +1,19 @@
 package com.project.ecommerce.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class CategoryResponse {
-    private List<CategoryDTO> contents;
+@NoArgsConstructor
+public class ProductResponse {
+    List<ProductDTO> content;
     private Integer pageNumber;
     private Integer pageSize;
     private Integer totalPages;
-    private Integer totalItems;
+    private Long totalItems;
     private Boolean hasNext;
-
 }
